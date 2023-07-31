@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+=======
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0B2434;
+  padding: 20px;
+  
+
+}
+
+main {
+  background-color: #fff;
+  max-width: 800px;
+  height: 400px;
+  border-radius: 10px;
+  margin: auto;
+}
+>>>>>>> 10173c35d5b0037b90f2ba91f8123580bf823764
