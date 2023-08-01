@@ -8,6 +8,7 @@ body {
   background: #0B2434;
   padding: 20px;
   
+  
 
 }
 
@@ -17,9 +18,13 @@ main {
   height: 500px;
   border: none;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  padding: 20px;
+  
+  
   
  
 }

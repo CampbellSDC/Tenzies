@@ -6,9 +6,23 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Die />
-    </>
+    
+    <main>
+      <div className="container">
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+          <Die value="1"/>
+      </div>
+    </main>
+    
+    
   )
 }
 
