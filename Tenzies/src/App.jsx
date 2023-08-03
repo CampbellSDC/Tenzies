@@ -30,7 +30,7 @@ function rollDie(){
           {dieBoxes}
       </div>
 
-      <button onClick={rollDie}>Roll</button>
+      <button className='roll-die-btn' onClick={rollDie}>Roll</button>
     </main>
     
     
