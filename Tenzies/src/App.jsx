@@ -3,6 +3,7 @@ import Die from './Components/Die'
 import './App.css'
 
 function App() {
+const [die, setDie] = React.useState(randomNums())
 
   function randomNums(){
     const numArray = []
@@ -14,7 +15,7 @@ function App() {
     
   }
 
-
+const dieBoxes = die.map(die => <Die value={die}/>)
 
 
 
@@ -24,16 +25,7 @@ function App() {
     
     <main>
       <div className="container">
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
-          <Die value="1"/>
+          {dieBoxes}
       </div>
     </main>
     
