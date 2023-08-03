@@ -18,7 +18,9 @@ const [die, setDie] = React.useState(randomNums())
 const dieBoxes = die.map(die => <Die value={die}/>)
 
 
-
+function rollDie(){
+  setDie(randomNums())
+}
 
 
   return (
@@ -27,6 +29,8 @@ const dieBoxes = die.map(die => <Die value={die}/>)
       <div className="container">
           {dieBoxes}
       </div>
+
+      <button onClick={rollDie}>Roll</button>
     </main>
     
     

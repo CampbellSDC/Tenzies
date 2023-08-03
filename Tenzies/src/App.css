@@ -20,7 +20,19 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 15px;
+  
   width: 600px;
  
   
+}
+
+button {
+  font-size: 1.5rem;
+  width: 150px;
+  border: none;
+  border-radius: 7px;
+  background-color: #5035FF;
+  color: #fff;
+  padding: 7px 10px;
+  margin-top: 50px;
 }
