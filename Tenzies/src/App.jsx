@@ -20,7 +20,9 @@ const [die, setDie] = React.useState(randomNums())
   }
 
   function holdDice(id) {
-    console.log(id)
+    setDie(oldDice => oldDice.map(die => {
+      return die.id === id ? {...oldDice, isHeld: !die.isHeld} : die
+    }))
   }
 
 const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} holdDice={() => holdDice(die.id)}/>)
