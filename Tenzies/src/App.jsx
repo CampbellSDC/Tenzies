@@ -10,14 +10,20 @@ const [die, setDie] = React.useState(randomNums())
     const numArray = []
     for(let i = 0; i < 10; i++){
       // *Need to push an object to the numArray to have the two key/value pairs
-     numArray.push({value:Math.ceil(Math.random() * 6), isHeld:true})
+     numArray.push({value:Math.ceil(Math.random() * 6),
+       isHeld:false,
+      id:nanoid()})
     }
     
     return numArray
     
   }
 
-const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld}/>)
+  function holdDice(id) {
+    console.log(id)
+  }
+
+const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} holdDice={() => holdDice(die.id)}/>)
 
 
 function rollDie(){
