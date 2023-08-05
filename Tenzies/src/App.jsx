@@ -6,22 +6,30 @@ import {nanoid} from 'nanoid'
 function App() {
 const [die, setDie] = React.useState(randomNums())
 
+// TODO: Since the values for the dice will be used in randomNums and the rollDice function, 
+// TODO: it will be beneficial to have a helper function that generates those values. 
+
+function diceValues(){
+  return {value:Math.ceil(Math.random() * 6),
+    isHeld:false,
+   id:nanoid()}
+}
+
   function randomNums(){
     const numArray = []
     for(let i = 0; i < 10; i++){
       // *Need to push an object to the numArray to have the two key/value pairs
-     numArray.push({value:Math.ceil(Math.random() * 6),
-       isHeld:false,
-      id:nanoid()})
+     numArray.push(diceValues())
     }
     
     return numArray
     
   }
 
+
   function holdDice(id) {
     setDie(oldDice => oldDice.map(die => {
-      return die.id === id ? {...oldDice, isHeld: !die.isHeld} : die
+      return die.id === id ? {...die, isHeld:!die.isHeld} : die
     }))
   }
 
@@ -29,7 +37,9 @@ const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.
 
 
 function rollDie(){
-  setDie(randomNums())
+  setDie(oldDice => oldDice.map(die => {
+    return die.isHeld ? die : diceValues() 
+  }))
 }
 
 
