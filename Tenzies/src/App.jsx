@@ -11,13 +11,21 @@ const [die, setDie] = React.useState(randomNums())
 
 const [tenzies, setTenzies] = React.useState(false)
 
+const [clicks, setClicks] = React.useState(0)
+
 React.useEffect(() => {
   const diceHeld = die.every(dice => dice.isHeld)
   const diceValues = die.every(dice => dice.value)
 
   if(diceHeld && diceValues){
     setTenzies(true)
-    console.log("You've Won!")
+    if(!localStorage.getItem("high score")){
+      localStorage.setItem("high score", clicks)
+    } else if(clicks < localStorage.getItem('high score')) {
+      localStorage.setItem('high score', clicks)
+    }
+    
+    console.log(localStorage)
   }
 
 }, [die])
@@ -58,13 +66,18 @@ const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.
 
 function rollDie(){
   if(!tenzies){
+    setClicks(prevClicks => prevClicks + 1)
     setDie(oldDice => oldDice.map(die => {
+      
       return die.isHeld ? die : diceValues() 
     }))
   } else {
     setTenzies(false)
+    setClicks(0)
     setDie(randomNums)
   }
+
+
   
 }
 
@@ -78,8 +91,14 @@ function rollDie(){
       <div className="container">
           {dieBoxes}
       </div>
+      <h2 className="click-counter">Current Score: {clicks}</h2>
+      <h2 className="high-score">High Score: {localStorage.getItem('high score')}</h2>
+      <div className="button-container">
+        <button className='roll-die-btn' onClick={rollDie}>{tenzies ? "New Game" : "Roll"}</button>
+        <button className='reset-score-btn'>Reset High Score</button> 
 
-      <button className='roll-die-btn' onClick={rollDie}>{tenzies ? "New Game" : "Roll"}</button>
+      </div>
+      
     </main>
     
     
