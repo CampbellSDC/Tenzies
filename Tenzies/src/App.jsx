@@ -2,6 +2,7 @@ import React from 'react'
 import Die from './Components/Die'
 import './App.css'
 import {nanoid} from 'nanoid'
+import Confetti from 'react-confetti'
 
 function App() {
 const [die, setDie] = React.useState(randomNums())
@@ -61,14 +62,14 @@ function rollDie(){
   return (
     
     <main>
-
-<h1 className="title">Tenzies</h1>
+      {tenzies && <Confetti />}
+    <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="container">
           {dieBoxes}
       </div>
 
-      <button className='roll-die-btn' onClick={rollDie}>Roll</button>
+      <button className='roll-die-btn' onClick={rollDie}>{tenzies ? "New Game" : "Roll"}</button>
     </main>
     
     
