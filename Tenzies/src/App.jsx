@@ -6,6 +6,21 @@ import {nanoid} from 'nanoid'
 function App() {
 const [die, setDie] = React.useState(randomNums())
 
+// * Set state for if the game has been won
+
+const [tenzies, setTenzies] = React.useState(false)
+
+React.useEffect(() => {
+  const diceHeld = die.every(dice => dice.isHeld)
+  const diceValues = die.every(dice => dice.value)
+
+  if(diceHeld && diceValues){
+    setTenzies(true)
+    console.log("You've Won!")
+  }
+
+}, [die])
+
 // TODO: Since the values for the dice will be used in randomNums and the rollDice function, 
 // TODO: it will be beneficial to have a helper function that generates those values. 
 
@@ -46,6 +61,9 @@ function rollDie(){
   return (
     
     <main>
+
+<h1 className="title">Tenzies</h1>
+            <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="container">
           {dieBoxes}
       </div>
