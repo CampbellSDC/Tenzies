@@ -49,6 +49,10 @@ function diceValues(){
     }))
   }
 
+// * Instead of hard coding 10 instances of the Die component,
+// * we are mapping over the die array and creating 10 Die components
+// * and then calling the dieBoxes variable below
+
 const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.isHeld} holdDice={() => holdDice(die.id)}/>)
 
 
