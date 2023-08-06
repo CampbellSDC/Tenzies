@@ -53,9 +53,15 @@ const dieBoxes = die.map(die => <Die key={die.id} value={die.value} isHeld={die.
 
 
 function rollDie(){
-  setDie(oldDice => oldDice.map(die => {
-    return die.isHeld ? die : diceValues() 
-  }))
+  if(!tenzies){
+    setDie(oldDice => oldDice.map(die => {
+      return die.isHeld ? die : diceValues() 
+    }))
+  } else {
+    setTenzies(false)
+    setDie(randomNums)
+  }
+  
 }
 
 
