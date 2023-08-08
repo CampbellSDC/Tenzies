@@ -13,7 +13,7 @@ const [tenzies, setTenzies] = React.useState(false)
 
 const [clicks, setClicks] = React.useState(0)
 
-const [highScore, setHighScore] = React.useState(parseInt(localStorage.getItem('high score')))
+const [highScore, setHighScore] = React.useState(parseInt(localStorage.getItem('high score')) || 0)
 
 React.useEffect(() => {
   const diceHeld = die.every(dice => dice.isHeld)
